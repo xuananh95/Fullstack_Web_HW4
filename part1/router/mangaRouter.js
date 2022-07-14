@@ -22,15 +22,15 @@ mangaRouter.post("/", (req, res) => {
     res.send(mangas);
 });
 
-mangaRouter.put("/", (req, res) => {
+mangaRouter.put("/:id", (req, res) => {
     mangas = mangas.map((el) =>
-        el.id === req.body.id ? { ...el, name: req.body.name } : el
+        el.id === req.params.id ? { ...el, name: req.body.name } : el
     );
     res.send(mangas);
 });
 
-mangaRouter.delete("/", (req, res) => {
-    mangas = mangas.filter((el) => el.id !== req.body.id);
+mangaRouter.delete("/:id", (req, res) => {
+    mangas = mangas.filter((el) => el.id !== req.params.id);
     res.send(mangas);
 });
 

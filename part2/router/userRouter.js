@@ -17,15 +17,15 @@ userRouter.post("/", (req, res) => {
     res.send(users);
 });
 
-userRouter.put("/", (req, res) => {
+userRouter.put("/:id", (req, res) => {
     users = users.map((el) =>
-        el.id === req.body.id ? { ...el, name: req.body.name } : el
+        el.id === req.params.id ? { ...el, name: req.body.name } : el
     );
     res.send(users);
 });
 
-userRouter.delete("/", (req, res) => {
-    users = users.filter((el) => el.id !== req.body.id);
+userRouter.delete("/:id", (req, res) => {
+    users = users.filter((el) => el.id !== req.params.id);
     res.send(users);
 });
 
